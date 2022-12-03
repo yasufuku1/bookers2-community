@@ -9,7 +9,7 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
-  		  <tr>
+  		  <tr id ="book_<%= @book.id %>">
           <td><%= link_to(@book.user) do %>
             <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
             <%= @book.user.name %>
@@ -17,14 +17,15 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
-          <td><%= render 'favorites/btn', book: @book %></td>
+          <td class="favorite_btn"><%= render 'favorites/btn', book: @book %></td>
+          <td class="comments_count">コメント数:<%= @book.book_comments.count %></td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
-      <table>
+      <table class="book_comment">
         <%= render "book_comments/index", book: @book %>
       </table>
         <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
