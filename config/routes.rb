@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :group_users, only:[:index]
-  resources :groups,except: [:destroy]
+  resources :groups do
+    get 'Join' => 'groups#join'
+  end
 
   get 'search' => 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
