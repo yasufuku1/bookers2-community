@@ -26,16 +26,16 @@
   		    <td><%= @group.introduction %></td>
   		    <td>
   		      <% @group.users.each do |member| %>
-  		      <%= member.name %><br>
+  		      <li style="list-style: none;"></li><%= member.name %></li>
   		      <% end %>
 		      </td>
   		    <td>
   		      <% if @group.owner_id == current_user.id %>
   		        <%= link_to "Edit", edit_group_path(@group), class: "btn btn-sm btn-success" %>
-		        <% elsif @group.users.include?(current_user) %>
-  		        <%= link_to "Leave this group", group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+		        <% elsif @group.includesUser?(current_user) %>
+  		        <%= link_to "Leave this group", group_group_user_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
 		        <% else %>
-  		        <%= link_to "Join this group", group_Join_path(@group), class: "btn btn-sm btn-success" %>
+  		        <%= link_to "Join this group", group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
 		        <% end %>
   		    </td>
   		  </tr>
