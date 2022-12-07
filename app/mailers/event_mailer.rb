@@ -1,7 +1,14 @@
 class EventMailer < ApplicationMailer
-  def send_mail(mail_title, mail_content, group_users)
+  def send_mail(mail_title, mail_content, group_users,group)
     @mail_title = mail_title
     @mail_content = mail_content
-    mail(bcc: group_users.pluck(:email), subject: mail_title)
+    @group = group
+    mail(
+      #from: 'メアド',
+      to: group_users.pluck(:email),
+      #bcc: group_users.pluck(:email),
+      subject: 'New Event Notice!!'
+      )
   end
+
 end

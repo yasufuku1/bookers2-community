@@ -1,9 +1,8 @@
 <div class='container px-5 px-sm-0'>
-  <%#= render 'layouts/errors', obj: @group %>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Event Mail</h1>
-  		<%= form_with url: group_send_mail_path(@group), method: :get, local:true do |f| %>
+  		<%= form_with url: group_event_notices_path(@group), method: :post, local:true do |f| %>
         <div class="form-group">
           <%= f.label :Title %>
           <%= f.text_field :mail_title, class: 'form-control group_mail_title' %>

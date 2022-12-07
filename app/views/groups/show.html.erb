@@ -40,7 +40,7 @@
   		    </td>
   		    <td>
   		      <% if @group.owner_id == current_user.id %>
-  		      <%= link_to "Notice an Event", group_new_mail_path(@group), class: "btn btn-sm btn-info" %>
+  		      <%= link_to "Notice an Event", new_group_event_notice_path(@group), class: "btn btn-sm btn-info" %>
   		      <% end %>
 		      </td>
   		  </tr>
