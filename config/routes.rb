@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'event_notices/new'
-  get 'event_notices/sent'
   devise_for :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -27,6 +25,10 @@ Rails.application.routes.draw do
 #      get 'send/mail' => 'groups#send_mail'
 #      get 'Join' => 'groups#join'
   end
+
+  resources :chats, only:[:create]
+  resources :rooms, only:[:show]
+
 
   get 'search' => 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
