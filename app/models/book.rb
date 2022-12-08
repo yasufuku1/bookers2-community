@@ -5,7 +5,11 @@ class Book < ApplicationRecord
   has_many :book_comments, dependent: :destroy
 
   has_many :favorited_users, through: :favorites, source: :user
-
+  
+  # 7a answerコードの書き方 --start--
+  has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
+  # 7a answerコードの書き方 --finish--
+  
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 

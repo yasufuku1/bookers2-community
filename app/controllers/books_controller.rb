@@ -14,10 +14,19 @@ class BooksController < ApplicationController
 
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
+
     @books = Book.includes(:favorited_users).
     sort_by { |x|
       x.favorited_users.includes(:vavorites).where(created_at: from...to).size
     }.reverse
+
+    # 7a answerコードの書き方 --start--
+    #   @books = Book.all.sort {|a,b|
+    #   b.favorites.where(created_at: from...to).size <=>
+    #   a.favorites.where(created_at: from...to).size
+    # }
+    # 7a answerコードの書き方 --finish--
+
   end
 
   def create
