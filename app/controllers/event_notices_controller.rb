@@ -9,7 +9,15 @@ class EventNoticesController < ApplicationController
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
 
-    EventMailer.send_mail(@mail_title,@mail_content,@group_users,@group).deliver
+    event = {
+      :group => @group,
+      :mail_title => @mail_title,
+      :mail_content => @mail_content
+    }
+
+    EventMailer.send_notifications_to_group(event)
+
+    #EventMailer.send_mail(@mail_title,@mail_content,@group_users,@group).deliver
 
     render 'sent'
   end
