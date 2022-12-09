@@ -1,19 +1,29 @@
 class RoomsController < ApplicationController
-  def show
-    @user = User.find(params[:id])
-    rooms = current_user.entries.pluck(:room_id)
-    user_rooms = Entry.find_by(user_id: @user.id, room_id: rooms)
+  before_action :authenticate_user!
 
-    unless user_rooms.nil?
-      @room = user_rooms.room
-    else
-      @room = Room.new
-      @room.save
-      Entr.create(user_id: current_user.id, room_id: @room.id)
-      Entr.create(user_id: @user.id, room_id: @room.id)
-    end
-    @chats = @room.chats
-    @chat = Chat.new(room_id: @room.id)
+  def create
+    @room = Room.create
+    Entry.create(user_id: current_user.id, room_id: @room.id)
+    Entry.create(user_id: params[:entry][:user_id], room_id: @room.id)
+    redirect_to room_path(@room.id)
   end
+
+  def show
+    @room = Room.find(params[:id])
+    if Entry.where(user_id: current_user.id, room_id: @room.id).present?
+      @chat = Chat.new
+      @messages = @room.chats
+      @entries = @room.entries
+      @another_entry = @entries.where.not(user_id: current_user.id).first
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  private
+  # def join_room_params
+  #   params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)
+  # end
+
 
 end

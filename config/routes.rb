@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :chats, only:[:create]
-  resources :rooms, only:[:show]
+  resources :rooms, only:[:show, :create]
 
 
   get 'search' => 'searches#search'

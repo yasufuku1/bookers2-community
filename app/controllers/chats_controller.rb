@@ -1,5 +1,5 @@
-class ChatController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+class ChatsController < ApplicationController
+ before_action :authenticate_user!, only: [:create]
   def create
     @chat = Chat.new(message_params)
     @chat.user_id = current_user.id
