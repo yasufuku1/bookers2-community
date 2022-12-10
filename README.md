@@ -1,24 +1,24 @@
-# README
+応用課題で参考にした資料
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+課題7c/8c/9c【コミュニティアプリの機能を学ぼう】
 
-Things you may want to cover:
+7c: https://qiita.com/ki_87/items/5add92e34c639fe13ef0
 
-* Ruby version
+8c: https://qiita.com/ki_87/items/eb2d073c2dccbed42c5a
 
-* System dependencies
+9c: https://qiita.com/ki_87/items/67f8965e8de17e95ac1c
 
-* Configuration
+ ※注意※
+ config/environments/deveropment.rbの「user_name」「password」の情報をpushしないこと！
 
-* Database creation
+課題7a/8a/9a【SNSの機能を学ぼう】
 
-* Database initialization
+7a: https://qiita.com/ladkol2626/items/a673490af89d22aa3b0f
 
-* How to run the test suite
+8a: https://note.com/ya_jp/n/nf61a9cdd27a8
+    https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116 ← ER図はこちらを参照
 
-* Services (job queues, cache servers, search engines, etc.)
+9a: https://qiita.com/moru0606/items/472fd9eb603611163cb8
 
-* Deployment instructions
-
-* ...
+ ※Gemfileにimpressionistを入れる
+ 　<%= link_to 'mpressionist', 'https://github.com/charlotte-ruby/impressionist' %>
