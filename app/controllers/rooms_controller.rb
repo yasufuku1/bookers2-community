@@ -4,7 +4,8 @@ class RoomsController < ApplicationController
   def create
     @room = Room.create
     Entry.create(user_id: current_user.id, room_id: @room.id)
-    Entry.create(user_id: params[:entry][:user_id], room_id: @room.id)
+    # Entry.create(user_id: params[:entry][:user_id], room_id: @room.id) #paramsに変更
+    Entry.create(entry_params)
     redirect_to room_path(@room.id)
   end
 
@@ -21,9 +22,9 @@ class RoomsController < ApplicationController
   end
 
   private
-  # def join_room_params
-  #   params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)
-  # end
+  def entry_params
+    params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)
+  end
 
 
 end
