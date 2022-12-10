@@ -8,6 +8,15 @@
 
 9c: https://qiita.com/ki_87/items/67f8965e8de17e95ac1c
 
+メール送信には「Action Mailer」を使用する。（Ruby on railsに元々備わっている機能）
+
+【gmailでパスワード（16桁）を作成する手順として】
+「Googleアカウント」→「セキュリティ」→「アプリパスワード」
+「アプリを選択」→「メール」
+「デバイスを選択」」→「その他（名前を入力）」※rails appなど分かりやすい名前で
+→「生成」でパスワードをコピーしてdevelopment.rbにペースト
+
+
  ※注意※
  config/environments/deveropment.rbの「user_name」「password」の情報をpushしないこと！
 
@@ -16,9 +25,10 @@
 7a: https://qiita.com/ladkol2626/items/a673490af89d22aa3b0f
 
 8a: https://note.com/ya_jp/n/nf61a9cdd27a8
-    https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116 ← ER図はこちらを参照
+
+   https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116 ← ER図はこちらを参照
 
 9a: https://qiita.com/moru0606/items/472fd9eb603611163cb8
 
- ※Gemfileにimpressionistを入れる
- 　<%= link_to 'mpressionist', 'https://github.com/charlotte-ruby/impressionist' %>
+ ※9aではGemfileに 'pimpressionist'を入れる
+ https://github.com/charlotte-ruby/impressionist

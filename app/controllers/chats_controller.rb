@@ -1,12 +1,13 @@
 class ChatsController < ApplicationController
  before_action :authenticate_user!, only: [:create]
+
   def create
     @chat = Chat.new(message_params)
     @chat.user_id = current_user.id
     if @chat.save
       redirect_to room_path(@chat.room_id)
     else
-      redirect_back(fallback_location: root_path)
+      render :validater
     end
   end
 

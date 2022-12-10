@@ -20,16 +20,21 @@
     </div>
   </div>
 
+  <div class="errors">
+    <%= render "layouts/errors", obj: @chat %>
+  </div>
+
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <div class="posts">
-        <%= form_with model:@chat, local: true do |f| %>
+        <%= form_with model:@chat, local: false do |f| %>
+        <!-- 「local: false」=> 「data: {remote: true}」でも動くよ！-->
           <div class="form-group">
             <%= f.text_field :message, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.hidden_field :room_id, value: @room.id %>
-            <!-- 送信を表示させないため、「=」はつけない（enterキーで送信できる仕組み）-->
+             <!--送信を表示させないため、「=」はつけない（enterキーで送信できる仕組み）-->
             <% f.submit "送信", class: 'btn btn-info' %>
           </div>
         <% end %>
