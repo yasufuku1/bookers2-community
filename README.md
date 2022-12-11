@@ -2,11 +2,11 @@
 
 課題7c/8c/9c【コミュニティアプリの機能を学ぼう】
 
-[7c]: https://qiita.com/ki_87/items/5add92e34c639fe13ef0
+7c: https://qiita.com/ki_87/items/5add92e34c639fe13ef0
 
-[8c]: https://qiita.com/ki_87/items/eb2d073c2dccbed42c5a
+8c: https://qiita.com/ki_87/items/eb2d073c2dccbed42c5a
 
-[9c]: https://qiita.com/ki_87/items/67f8965e8de17e95ac1c
+9c: https://qiita.com/ki_87/items/67f8965e8de17e95ac1c
 
 メール送信には「Action Mailer」を使用する。（Ruby on railsに元々備わっている機能）
 
@@ -26,28 +26,28 @@
 
 課題7a/8a/9a【SNSの機能を学ぼう】
 
-[7a]: https://qiita.com/ladkol2626/items/a673490af89d22aa3b0f
+7a: https://qiita.com/ladkol2626/items/a673490af89d22aa3b0f
 
-[8a]: https://note.com/ya_jp/n/nf61a9cdd27a8
+8a: https://note.com/ya_jp/n/nf61a9cdd27a8
 
-[こちらのER図を参照]: https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116
+こちらのER図を参照: https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116
 
-[9a]: https://qiita.com/moru0606/items/472fd9eb603611163cb8
+9a: https://qiita.com/moru0606/items/472fd9eb603611163cb8
 
-[gem]: https://github.com/charlotte-ruby/impressionist
+gem: https://github.com/charlotte-ruby/impressionist
 
 
  ※9aではGemfileに 'impressionist'を入れるやり方がほとんどのため、gemを入れずに閲覧数をカウントするやり方を下記に記す
 
  1.モデルを作成する。
 
- $rails g model ViewCount user_id:integer book_id:integer
+    $rails g model ViewCount user_id:integer book_id:integer
 
- $rails db:migrate
+    $rails db:migrate
 
  2.book.rbとuser.rbにコードを追記し、アソシエーションする
 
- has_many :view_counts, dependent: :destroy
+    has_many :view_counts, dependent: :destroy
 
  3.books_controller.rbにを編集する。
 
