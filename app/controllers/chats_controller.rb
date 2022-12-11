@@ -4,11 +4,7 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new(message_params)
     @chat.user_id = current_user.id
-    if @chat.save
-      redirect_to room_path(@chat.room_id)
-    else
-      render :validater
-    end
+    render :validater unless @chat.save
   end
 
   private

@@ -1,13 +1,12 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit,:update, :destroy]
-  impressionist actions: [:show, :index]
 
   def show
     @book = Book.find(params[:id])
     @book_new = Book.new
     @book_comment = BookComment.new
-    impressionist(@book, nil, unique: [:ip_address.to_s])
+    # impressionist(@book, nil, unique: [:ip_address.to_s])
 
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @book.user.id)
@@ -25,6 +24,10 @@ class BooksController < ApplicationController
         @room = Room.new
         @entry = Entry.new
       end
+    end
+
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
     end
 
   end
@@ -47,10 +50,6 @@ class BooksController < ApplicationController
     #   a.favorites.where(created_at: from...to).size
     # }
     # 7a answerコードの書き方 --finish--
-
-    # @book_view = Book.find(params[:id])
-    # impressionist(@book_view, nil, unique: [:session_hash.to_s])
-
   end
 
   def create

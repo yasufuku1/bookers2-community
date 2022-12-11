@@ -29,6 +29,27 @@
    https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116 ← ER図はこちらを参照
 
 9a: https://qiita.com/moru0606/items/472fd9eb603611163cb8
+gem →　https://github.com/charlotte-ruby/impressionist
 
- ※9aではGemfileに 'pimpressionist'を入れる
- https://github.com/charlotte-ruby/impressionist
+
+ ※9aではGemfileに 'impressionist'を入れるやり方がほとんどのため、gemを入れずに閲覧数をカウントするやり方を下記に記す
+
+ 1.モデルを作成する。
+ $rails g model ViewCount user_id:integer book_id:integer
+ $rails db:migrate
+
+ 2.book.rbとuser.rbに以下のコードを追記し、アソシエーションする
+  has_many :view_counts, dependent: :destroy
+
+ 3.books_controller.rbにを編集する。
+ 今回「bookの詳細画面にユーザが遷移してきたらカウントする」という記述を入れる。
+
+  def show
+     @book = Book.find(params[:id])
+     unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)　#ViewCountモデルにログインしているユーザが過去に遷移先のbookにアクセスしているかどうか探す
+      current_user.view_counts.create(book_id: @book.id) #なければViewCountモデルを作成する
+    end
+  end
+
+4.viewに追記する
+<%= @book.view_counts.count %>
