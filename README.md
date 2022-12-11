@@ -8,21 +8,29 @@
 
 9c: https://qiita.com/ki_87/items/67f8965e8de17e95ac1c
 
-メール送信には「Action Mailer」を使用する。（Ruby on railsに元々備わっている機能）
+9cではメール送信時に「Action Mailer」を使用する。（Ruby on railsに元々備わっている機能）
 
 【gmailでパスワード（16桁）を作成する手順として】
 
 「Googleアカウント」→「セキュリティ」→「アプリパスワード」
-「アプリを選択」→「メール」
 
-「デバイスを選択」」→「その他（名前を入力）」※rails appなど分かりやすい名前で
+ -「アプリを選択」→「メール」
 
-→「生成」でパスワードをコピーしてdevelopment.rbにペースト
+ -「デバイスを選択」」→「その他（名前を入力）」※rails appなど分かりやすい名前で
+
+→「生成」でパスワードをコピーしてconfig/environments/development.rbにペースト
 
 
  ※注意※
 
- config/environments/deveropment.rbの**user_name**と**password**の情報を**リモートリポジトリにpush**しないこと！
+ config/environments/deveropment.rbの
+
+ **user_name**と**password**の情報を
+
+ **リモートリポジトリにpush**しないこと！
+
+ **pushする前に削除すること！**
+
 
 課題7a/8a/9a【SNSの機能を学ぼう】
 
@@ -36,8 +44,11 @@
 
 gem: https://github.com/charlotte-ruby/impressionist
 
+_________________________________
 
- ※9aではGemfileに 'impressionist'を入れるやり方がほとんどのため、gemを入れずに閲覧数をカウントするやり方を下記に記す
+ ※9aについて
+
+ ネットではGemfileに 'impressionist'を入れるやり方がほとんどであったため、'impressionist'を入れずに閲覧数をカウントするやり方を下記に記す
 
  1.モデルを作成する。
 
@@ -57,10 +68,11 @@ gem: https://github.com/charlotte-ruby/impressionist
      @book = Book.find(params[:id])
      #ViewCountモデルにログインしているユーザが過去に遷移先のbookにアクセスしているかどうか探す
       unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+        #なければViewCountモデルに新規で作成・保存する
         current_user.view_counts.create(book_id: @book.id)
-     end
+      end
     end
 
 4.viewに追記する
 
-<%= @book.view_counts.count %>
+    <%= @book.view_counts.count %>
