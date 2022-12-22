@@ -1,6 +1,6 @@
 ![Nagano cake Logo](https://github.com/webcamp-menber-ateam/nagano_cake/blob/develop/app/assets/images/logo_image.png)
 
-<img src="https://github.com/webcamp-menber-ateam/nagano_cake/blob/develop/app/assets/images/logo_image.png" width="200" height="400" />
+<div style="text-align: center;"><img src="https://github.com/webcamp-menber-ateam/nagano_cake/blob/develop/app/assets/images/logo_image.png" width="120" height="120" /></div>
 
 ## 案件概要
 
