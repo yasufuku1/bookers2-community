@@ -1,3 +1,9 @@
+![Nagano cake Logo](https://github.com/webcamp-menber-ateam/nagano_cake/blob/develop/app/assets/images/logo_image.png)
+
+## 案件概要
+
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
+
 ##応用課題で参考にした資料
 
 課題7c/8c/9c【コミュニティアプリの機能を学ぼう】
@@ -31,6 +37,7 @@
 
  **pushする前に削除すること！**
 
+___
 
 課題7a/8a/9a【SNSの機能を学ぼう】
 
