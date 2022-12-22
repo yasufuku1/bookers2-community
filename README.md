@@ -1,4 +1,4 @@
-![Nagano cake Logo](https://github.com/webcamp-menber-ateam/nagano_cake/blob/develop/app/assets/images/logo_image.png)
+![Nagano cake Logo](https://github.com/webcamp-menber-ateam/nagano_cake/blob/develop/app/assets/images/logo_image.png =100x100)
 
 ## 案件概要
 
